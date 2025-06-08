@@ -1,0 +1,151 @@
+PowerShell Run as Admin
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+choco install terraform
+
+terraform -help
+
+create main.tf
+
+terraform init
+
+terraform apply
+
+http://localhost:8000/
+
+docker ps
+
+terraform destroy
+
+------------------------------------------------------------------
+
+https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-change
+
+Enable Compute Engine API
+
+mkdir learn-terraform-gcp
+
+cd C:\Arun_HP\learn-terraform-gcp 
+
+gcloud auth application-default login
+
+terraform init
+
+terraform fmt
+
+terraform apply
+
+terraform show
+
+
+https://www.atlantic.net/dedicated-server-hosting/how-to-install-and-setup-apache-spark-on-debian-10/ 
+
+sudo apt-get update -y 
+
+sudo apt-get install default-jdk -y
+
+sudo apt-get install scala -y
+
+scala -version
+
+wget https://downloads.apache.org/spark/spark-3.5.4/spark-3.5.4-bin-hadoop3-scala2.13.tgz
+
+tar -xvzf spark-3.5.4-bin-hadoop3-scala2.13.tgz
+
+sudo mv spark-3.5.4-bin-hadoop3-scala2.13 /opt/spark
+
+cd /opt/spark/sbin
+
+nano ~/.bashrc
+
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+
+
+source ~/.bashrc
+
+
+start-master.sh
+
+ss -tunelp | grep 8080
+
+
+start-worker.sh spark://debian10:7077
+
+spark-shell
+
+-------------
+import org.apache.spark.sql.types.{StringType, StructType}
+import org.apache.spark.sql.{Row, SparkSession}
+
+val spark = SparkSession.builder.master("local[1]").appName("AKS.com").getOrCreate()
+
+val data = Seq(("Arun","Kumar","UK","LON"),("Donald","Duck","USA","NY"),("Amjath","Williams","IN","CHENNAI"),("Aseem","Jones","SG","SG"))
+
+val columns = Seq("firstname","lastname","country","state")
+
+import spark.implicits._
+val df = data.toDF(columns:_*)
+df.show(false)
+
+df.select("firstname","lastname").show()
+
+----------------
+
+stop-master.sh
+
+stop-worker.sh
+
+
+
+# IMPORTANT STEP
+terraform destroy
+
+---------------------------------
+
+GOSING
+
+
+terraform init
+
+terraform apply 
+
+learning-438120
+
+Enable -> https://console.developers.google.com/apis/api/dataproc.googleapis.com/overview?project=learning-438120
+
+terraform fmt
+
+terraform apply 
+
+https://console.cloud.google.com/dataproc/clusters?project=learning-438120
+
+https://console.cloud.google.com/storage/browser?project=learning-438120
+
+gcloud auth login
+
+gcloud config set project learning-438120
+
+gcloud compute ssh demo-vm-instance --zone us-central1-a
+
+gcloud dataproc jobs submit pyspark pyspark_job.py --cluster=demo-dataproc-cluster --region=us-central1
+
+https://console.cloud.google.com/storage/browser/bug-bucket-123/demo_output.csv?cloudshell=true&project=learning-438120&pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))
+
+gcloud dataproc jobs submit pyspark GoSing.py --cluster=demo-dataproc-cluster --region=us-central1
+
+terraform destroy
+
+pip install pyspark
+
+pip install jupyter
+
+jupyter-notebook --notebook-dir=/home/arunsk12
+
+
+---------------------------------
+
+
+
+
